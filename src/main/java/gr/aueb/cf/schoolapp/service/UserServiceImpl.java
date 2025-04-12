@@ -1,6 +1,5 @@
 package gr.aueb.cf.schoolapp.service;
 
-import gr.aueb.cf.schoolapp.core.RoleType;
 import gr.aueb.cf.schoolapp.dao.IUserDAO;
 import gr.aueb.cf.schoolapp.exceptions.UserDAOException;
 import gr.aueb.cf.schoolapp.dto.InsertUserDTO;
@@ -25,7 +24,7 @@ public class UserServiceImpl implements IUserService {
             // log
             return userDAO.insert(user);
         } catch (UserDAOException e) {
-            // e.printStackTrace();
+            e.printStackTrace();
             // log
             // rollback
             throw e;
@@ -48,6 +47,9 @@ public class UserServiceImpl implements IUserService {
             // log
             // rollback
             throw e;
+        } catch (UserNotFoundException e1) {
+            e1.printStackTrace();
+            throw e1;
         }
     }
 

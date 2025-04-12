@@ -24,8 +24,8 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
-//    private final IUserDAO userDAO = new UserDAOImpl();
-//    private final IUserService userService = new UserServiceImpl(userDAO);
+    private final IUserDAO userDAO = new UserDAOImpl();
+    private final IUserService userService = new UserServiceImpl(userDAO);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,7 +67,7 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession(true);  // Create new one for address fixation attack
             session.setAttribute("authenticated", true);
             session.setAttribute("username", username);
-            session.setAttribute("role", IUserService.getUserByUsername(username).getRoleType().name());
+//            session.setAttribute("role", IUserService.getUserByUsername(username).getRoleType().name());
 
             if (session.getAttribute("role").equals("ADMIN")) { // overwrites web.xml
                 session.setMaxInactiveInterval(ADMIN_TIMEOUT);  // Admin get 30-min sessions
@@ -78,7 +78,7 @@ public class LoginController extends HttpServlet {
 
 //                response.sendRedirect(request.getContextPath() + "/login?isError=true");
 
-        } catch (UserDAOException | UserNotFoundException e) {
+        } catch (UserDAOException e) {
             //response.sendRedirect(request.getContextPath() + "/login?isError=true");
             request.setAttribute("error", "Authentication Error");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);

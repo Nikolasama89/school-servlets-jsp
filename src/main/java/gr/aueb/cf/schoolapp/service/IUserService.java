@@ -7,7 +7,10 @@ import gr.aueb.cf.schoolapp.exceptions.UserNotFoundException;
 
 public interface IUserService {
     User insertUser(InsertUserDTO dto) throws UserDAOException;
-    static User getUserByUsername(String username) throws UserNotFoundException, UserDAOException;
+//    static User getUserByUsername(String username) throws UserNotFoundException, UserDAOException;
+
+    User getUserByUsername(String username) throws UserNotFoundException, UserDAOException;
+
     boolean isUserValid(String username, String password) throws UserDAOException;
     boolean isEmailExists(String username) throws UserDAOException;
 }
