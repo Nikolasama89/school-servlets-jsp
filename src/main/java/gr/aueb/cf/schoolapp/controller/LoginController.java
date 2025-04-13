@@ -30,8 +30,6 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String isError = request.getParameter("isError");
-//        request.setAttribute("isError", isError == null ? "false" : "true");
 
         request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
     }
@@ -64,21 +62,22 @@ public class LoginController extends HttpServlet {
             if (oldSession != null) {
                 oldSession.invalidate(); // Destroy attacker's session
             }
-            HttpSession session = request.getSession(true);  // Create new one for address fixation attack
+            HttpSession session = request.getSession(true); // create a session object
             session.setAttribute("authenticated", true);
             session.setAttribute("username", username);
-//            session.setAttribute("role", IUserService.getUserByUsername(username).getRoleType().name());
+            session.setAttribute("role", userService.getUserByUsername(username).getRoleType().name());
 
             if (session.getAttribute("role").equals("ADMIN")) { // overwrites web.xml
                 session.setMaxInactiveInterval(ADMIN_TIMEOUT);  // Admin get 30-min sessions
             }
 
-            response.sendRedirect(request.getContextPath() + "/school-app/dashboard");
+            //response.sendRedirect(request.getContextPath() + "/school-app/dashboard");
+            response.sendRedirect(request.getContextPath() + "/school-app/teachers/view");
 
 
 //                response.sendRedirect(request.getContextPath() + "/login?isError=true");
 
-        } catch (UserDAOException e) {
+        } catch (UserDAOException | UserNotFoundException e) {
             //response.sendRedirect(request.getContextPath() + "/login?isError=true");
             request.setAttribute("error", "Authentication Error");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
