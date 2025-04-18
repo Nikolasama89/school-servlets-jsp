@@ -23,7 +23,7 @@
 </head>
 <body>
 <header class="bg-primary-800">
-    <div class="container mx-auto px-4">
+    <div class="px-0">
         <!-- Main header content -->
         <div class="flex items-center justify-between py-3">
             <!-- Logo and title -->
@@ -34,7 +34,7 @@
                          alt="Government Logo"
                          style="filter: brightness(0) invert(1)"> <!-- Ensures white logo visibility -->
                 </a>
-                <span class="text-lg font-semibold text-white hidden sm:block">
+                <span class="text-lg font-semibold text-white">
                     Coding Factory - Education Reinvented
                 </span>
             </div>
