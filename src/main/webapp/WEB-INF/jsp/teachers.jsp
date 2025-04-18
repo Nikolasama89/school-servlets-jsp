@@ -19,7 +19,7 @@
 <div class="main-content">
 
  <c:if test="${sessionScope.role == 'ADMIN'}">
-    <div class="m-bottom">
+    <div class="bg-white border border-gray-300 rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 m-bottom">
         <a href="${pageContext.request.contextPath}/school-app/teachers/insert">Εισαγωγή Καθηγητή</a>
     </div>
  </c:if>
