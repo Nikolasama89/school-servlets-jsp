@@ -71,8 +71,8 @@ public class LoginController extends HttpServlet {
                 session.setMaxInactiveInterval(ADMIN_TIMEOUT);  // Admin get 30-min sessions
             }
 
-            //response.sendRedirect(request.getContextPath() + "/school-app/dashboard");
-            response.sendRedirect(request.getContextPath() + "/school-app/teachers/view");
+            response.sendRedirect(request.getContextPath() + "/school-app/dashboard");
+//            response.sendRedirect(request.getContextPath() + "/school-app/teachers/view");
 
 
 //                response.sendRedirect(request.getContextPath() + "/login?isError=true");
