@@ -91,7 +91,7 @@ public class TeacherDAOImpl implements ITeacherDAO {
 
     @Override
     public void delete(Integer id) throws TeacherDAOException {
-        String sql = "DELETE FROM TEACHERS WHERE id = ?";
+        String sql = "DELETE FROM teachers WHERE id = ?";
 
         try (Connection connection = DBUtil.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
