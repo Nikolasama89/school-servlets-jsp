@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="bg-white border border-gray-300 rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1">
-                    <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />">Προβολή Μαθητών</a>
+                    <a href="<c:url value='${pageContext.request.contextPath}/school-app/students/view' />">Προβολή Μαθητών</a>
                 </div>
             </div>
         </div>
