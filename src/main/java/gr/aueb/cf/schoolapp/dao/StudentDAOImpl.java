@@ -11,6 +11,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class StudentDAOImpl implements IStudentDAO{
     @Override
@@ -34,7 +35,7 @@ public class StudentDAOImpl implements IStudentDAO{
             ps.setString(8, student.getStreetNum());
             ps.setString(9, student.getZipCode());
             ps.setInt(10, student.getCityId());
-            ps.setString(11, student.getUuid());
+            ps.setString(11, UUID.randomUUID().toString());
             ps.setTimestamp(12, Timestamp.valueOf(LocalDateTime.now()));
             ps.setTimestamp(13, Timestamp.valueOf(LocalDateTime.now()));
             ps.executeUpdate();
